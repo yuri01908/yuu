@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="UTF-8">
+ <title>不思議の国のアリス</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div class="container">
+   <h1>不思議の国のアリス 📖</h1>
+
+   <div id="story"></div>
+
+   <div class="nav">
+     <a href="index.html">
+       <button>To Do に戻る</button>
+     </a>
+   </div>
+ </div>
+
+ <script>
+   const stories = [
+     "アリスはある日、白うさぎを追いかけて穴に落ちました。",
+     "気がつくと、そこは不思議な世界でした。",
+     "小さなドアの向こうに、美しい庭が広がっています。",
+     "白うさぎは時計を見ながら、忙しそうに走っています。"
+   ];
+
+   const progress = Number(localStorage.getItem("storyProgress") || 0);
+   const storyDiv = document.getElementById("story");
+
+   if (progress === 0) {
+     storyDiv.textContent =
+       "まだ物語は開かれていません。今日の To Do を達成しましょう！";
+   } else {
+     for (let i = 0; i < Math.min(progress, stories.length); i++) {
+       const p = document.createElement("p");
+       p.textContent = stories[i];
+       storyDiv.appendChild(p);
+     }
+   }
+ </script>
+</body>
+</html>
